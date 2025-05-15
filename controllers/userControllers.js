@@ -4,7 +4,6 @@ const passport = require('passport');
 // Registro de usuario
 const registerUser = async (req, res, next) => {
   try {
-    console.log(req.body)
     const { email, username, password } = req.body;
     const user = new User({ email, username });
 

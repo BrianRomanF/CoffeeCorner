@@ -3,7 +3,6 @@ const express = require('express');
 const app = express();
 if (process.env.NODE_ENV !== "production") {
   require('dotenv').config();
-  app.set('trust proxy', 1);
 }
 const session = require('express-session');
 const passport = require('passport');
@@ -34,7 +33,7 @@ app.use(helmetConfig);
 
 connectDB();
 passportConfig();
-console.log(process.env.NODE_ENV)
+
 if (process.env.NODE_ENV === 'production') {
   app.set('trust proxy', 1); // <- ¡Esto es esencial en Render!
 }

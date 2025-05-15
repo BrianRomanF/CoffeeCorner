@@ -34,7 +34,6 @@ const createMyCoffee = async (req, res) => {
 
 const getMyCoffees = async (req, res) => {
   try {
-    console.log('getmy coffees',req.user)
     const userId = req.user._id;
     const coffees = await Coffee.find({ author: userId }).populate('reviews');
     res.json(coffees);
