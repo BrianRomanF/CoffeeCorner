@@ -1,8 +1,10 @@
-if (process.env.NODE_ENV !== "production") {
-    require('dotenv').config();
-}
+
 const express = require('express');
 const app = express();
+if (process.env.NODE_ENV !== "production") {
+  require('dotenv').config();
+  app.set('trust proxy', 1);
+}
 const session = require('express-session');
 const passport = require('passport');
 const LocalStrategy = require('passport-local');
@@ -36,7 +38,7 @@ const sessionConfig = {
     secret: process.env.SESSION_SECRET,
     name: '_usT',
     resave: false,
-    saveUninitialized: true,
+    saveUninitialized: false,
     cookie: {
         httpOnly: true,
         expires: Date.now() + 1000 * 60 * 60 * 24 * 7,
