@@ -34,6 +34,10 @@ app.use(helmetConfig);
 
 connectDB();
 passportConfig();
+console.log(process.env.NODE_ENV)
+if (process.env.NODE_ENV === 'production') {
+  app.set('trust proxy', 1); // <- ¡Esto es esencial en Render!
+}
 const sessionConfig = {
     secret: process.env.SESSION_SECRET,
     name: '_usT',
